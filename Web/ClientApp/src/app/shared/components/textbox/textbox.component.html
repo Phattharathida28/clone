@@ -1,0 +1,92 @@
+<div class="flex flex-column gap-2">
+    @if(!floatLabel){
+    @if(axis == "vertical"){
+    @if(hasLabel){
+    <ng-container *ngTemplateOutlet="label"></ng-container>
+    }
+    @if(icon){
+    <span [ngClass]="iconPosition == 'left' ? 'p-input-icon-left' : 'p-input-icon-right'">
+        <i [class]="icon"></i>
+        <input pInputText [value]="value" [class]="class" [placeholder]="placeholder"
+            [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''" [disabled]="disabled" (blur)="onTouched()"
+            (input)="onTextChange($event)" [readonly]="readonly" />
+    </span>
+    }
+    @else {
+    <input pInputText [value]="value" [class]="class" [placeholder]="placeholder"
+        [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''" [disabled]="disabled" (blur)="onTouched()"
+        (input)="onTextChange($event)" [readonly]="readonly" />
+    }
+    }
+    @else {
+    <div class="grid">
+        <div class="col-12 mb-2 md:col-2 md:mb-0 flex align-items-center">
+            <ng-container *ngTemplateOutlet="label"></ng-container>
+        </div>
+        <div class="col-12 md:col-10">
+            @if(icon){
+            <span [ngClass]="iconPosition == 'left' ? 'p-input-icon-left' : 'p-input-icon-right'">
+                <i [class]="icon"></i>
+                <input pInputText [value]="value" [class]="class" [placeholder]="placeholder"
+                    [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''" [disabled]="disabled" (blur)="onTouched()"
+                    (input)="onTextChange($event)" [readonly]="readonly" />
+            </span>
+            }
+            @else {
+            <input pInputText [value]="value" [class]="class" [placeholder]="placeholder"
+                [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''" [disabled]="disabled" (blur)="onTouched()"
+                (input)="onTextChange($event)" [readonly]="readonly" />
+            }
+        </div>
+    </div>
+    }
+    }
+    @else {
+    @if(icon){
+    <span class="p-float-label" [ngClass]="iconPosition == 'left' ? 'p-input-icon-left' : 'p-input-icon-right'">
+        <i [class]="icon"></i>
+        <input pInputText [value]="value" [class]="class" class="w-full"
+            [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''" [disabled]="disabled" (blur)="onTouched()"
+            (input)="onTextChange($event)" />
+        <ng-container *ngTemplateOutlet="label"></ng-container>
+    </span>
+    }
+    @else {
+    <span class="p-float-label">
+        <input pInputText [value]="value" [class]="class" class="w-full"
+            [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''" [disabled]="disabled" (blur)="onTouched()"
+            (input)="onTextChange($event)" />
+        <ng-container *ngTemplateOutlet="label"></ng-container>
+    </span>
+    }
+    }
+</div>
+<small *ngIf="helpText" [class]="helpTextClass">{{helpText}}</small>
+@if(hasErrors){
+<small class="text-red-600" *ngIf="control.hasError('required') || control.hasError('empty')">
+    {{ 'message.STD00007' | translate }}
+</small>
+<small class="text-red-600" *ngIf="control.hasError('minlength')">
+    {{'message.STD00008' | translate: { '0' : control?.errors["minlength"]?.requiredLength,'1':'label.ALL.Characters' |
+    translate } }}
+</small>
+<small class="text-red-600" *ngIf="control.hasError('maxlength')">
+    {{'message.STD00009' | translate:{ '0' : control?.errors["maxlength"]?.requiredLength,'1':'label.ALL.Characters' |
+    translate } }}
+</small>
+<ng-container *ngIf="control?.hasError('pattern')">
+    <div class="text-red-600">
+        <ng-content select=".invalid-pattern">
+        </ng-content>
+    </div>
+</ng-container>
+}
+
+<ng-template #label>
+    <label>
+        @if(required){
+        <span class="text-red-600">* </span>
+        }
+        <ng-content></ng-content>
+    </label>
+</ng-template>

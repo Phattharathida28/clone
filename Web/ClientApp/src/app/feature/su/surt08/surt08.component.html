@@ -1,0 +1,60 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <h5>{{ 'label.SURT08.ProgramName' | translate }}</h5>
+            <div class="flex flex-wrap py-4 justify-content-between gap-3 flex-column lg:flex-row lg:p-fluid">
+                <textbox [placeholder]="'label.ALL.Search' | translate" icon="pi pi-search" [hasLabel]="false"
+                    (onInput)="search($event)" class="w-full lg:w-6">
+                </textbox>
+            </div>
+
+            <datatable server [value]="activityLogs">
+                <ng-template #header pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="activityTypeCode" class="text-center  w-15rem">
+                            {{ 'label.SURT08.ActivityTypeCode' | translate }}
+                            <p-sortIcon field="groupCode"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="logMessage" class="text-center w-4">
+                            {{ 'label.SURT08.LogMessage' | translate }}
+                            <p-sortIcon field="groupCode"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="loggedBy" class="text-center">
+                            {{ 'label.SURT08.LoggedBy' | translate }}
+                            <p-sortIcon field="groupCode"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="createdProgram" class="text-center">
+                            {{ 'label.SURT08.CreatedProgram' | translate }}
+                            <p-sortIcon field="groupCode"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="loggedDate" class="text-center">
+                            {{ 'label.SURT08.LoggedDate' | translate }}
+                            <p-sortIcon field="groupCode"></p-sortIcon>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template #body pTemplate="body" let-dataItem="dataItem" let-rowIndex="rowIndex">
+                    <tr>
+                        <td class="text-center">{{ dataItem.activityTypeCode }}</td>
+                        <td>
+                            @if(dataItem.activityTypeCode == "2001" ||
+                            dataItem.activityTypeCode == "2002" ||
+                            dataItem.activityTypeCode == "2003" ||
+                            dataItem.activityTypeCode == "2004" ||
+                            dataItem.activityTypeCode == "2005" ||
+                            dataItem.activityTypeCode == "5000"){
+                            <pre class="text-wrap">{{ dataItem.logMessage | stringToJson | json }}</pre>
+                            }
+                            @else {
+                            {{ dataItem.logMessage }}
+                            }
+                        </td>
+                        <td>{{ dataItem.loggedBy }}</td>
+                        <td>{{ dataItem.createdProgram }}</td>
+                        <td class="text-center">{{ dataItem.loggedDate | date: 'dd/MM/yyyy' }}</td>
+                    </tr>
+                </ng-template>
+            </datatable>
+        </div>
+    </div>
+</div>

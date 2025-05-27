@@ -1,0 +1,73 @@
+<button class="layout-config-button p-link" type="button" (click)="onConfigButtonClick()">
+    <i class="pi pi-cog"></i>
+</button>
+
+<p-sidebar [(visible)]="visible" position="right" [transitionOptions]="'.3s cubic-bezier(0, 0, 0.2, 1)'"
+    styleClass="layout-config-sidebar w-30rem">
+    <ng-template pTemplate="header">
+        <h4>{{ 'label.ALL.Setting' | translate }}</h4>
+    </ng-template>
+    <section class="pb-4 flex align-items-center justify-content-between border-bottom-1 surface-border">
+        <span class="text-xl font-semibold">{{ 'label.ALL.Scale' | translate }}</span>
+        <div class="flex align-items-center gap-2 border-1 surface-border py-1 px-2" style="border-radius: 30px;">
+            <button icon="pi pi-minus" [disabled]="scale === scales[0]"
+                class="p-button-text p-button-rounded w-2rem h-2rem p-button p-button-icon-only"
+                (click)="decrementScale()">
+            </button>
+            <div class="flex gap-2 align-items-center">
+                @for (s of scales; track $index) {
+                <i class="pi pi-circle-fill text-300" [ngClass]="{'text-primary-500': s === scale}">
+                </i>
+                }
+            </div>
+            <button icon="pi pi-plus" (click)="incrementScale()" [disabled]="scale === scales.at(-1)"
+                class="p-button-text p-button-rounded w-2rem h-2rem p-button p-button-icon-only">
+            </button>
+        </div>
+    </section>
+
+    @if (!minimal) {
+    <ng-container>
+        <section class="py-4 flex align-items-center justify-content-between border-bottom-1 surface-border">
+            <span class="text-xl font-semibold">{{ 'label.ALL.MenuType' | translate }}</span>
+            <div class="flex justify-content-center">
+                <p-selectButton [options]="menuModeOptions" [(ngModel)]="menuMode" optionLabel="label"
+                    [allowEmpty]="false" optionValue="value">
+                </p-selectButton>
+            </div>
+        </section>
+
+        <section class="py-4 flex align-items-center justify-content-between border-bottom-1 surface-border">
+            <span class="text-xl font-semibold">{{ 'label.ALL.InputStyle' | translate }}</span>
+            <div class="flex justify-content-center">
+                <p-selectButton [options]="inputOptions" [(ngModel)]="inputStyle" optionLabel="label"
+                    [allowEmpty]="false" optionValue="value">
+                </p-selectButton>
+            </div>
+        </section>
+
+        <section class="py-4 flex align-items-center justify-content-between border-bottom-1 surface-border">
+            <span class="text-xl font-semibold">{{ 'label.ALL.RippleEffect' | translate }}</span>
+            <div class="flex justify-content-center">
+                <p-inputSwitch [(ngModel)]="ripple"></p-inputSwitch>
+            </div>
+        </section>
+
+        <section class="py-4 flex align-items-center justify-content-between border-bottom-1 surface-border">
+            <span class="text-xl font-semibold">{{ 'label.ALL.DarkMode' | translate }}</span>
+            <div class="flex justify-content-center">
+                <p-inputSwitch [(ngModel)]="colorScheme"></p-inputSwitch>
+            </div>
+        </section>
+    </ng-container>
+    }
+
+    <section class="py-4 border-bottom-1 surface-border">
+        <div class="text-xl font-semibold mb-3">{{ 'label.ALL.Theme' | translate }}</div>
+        <div class="flex align-items-center justify-content-start gap-3 mb-3">
+            <h4 class="m-0">Hex : </h4>
+            <p-colorPicker [(ngModel)]="color" (onHide)="changeTheme()"></p-colorPicker>
+            <input pInputText [(ngModel)]="color" (blur)="changeTheme()" />
+        </div>
+    </section>
+</p-sidebar>

@@ -1,0 +1,42 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <h5>{{ 'label.DBRT01.ProgramName' | translate }}</h5>
+            <div class="flex flex-wrap py-4 justify-content-between gap-3 flex-column lg:flex-row lg:p-fluid">
+                <textbox [placeholder]="'label.ALL.Search' | translate" icon="pi pi-search" [hasLabel]="false"
+                    [(ngModel)]="resetSerch" (onInput)="search($event)" class="w-full lg:w-6">
+                </textbox>
+                <button icon="pi pi-plus" severity="success" [label]="'label.ALL.Add' | translate" [routerLink]="['detail']"></button>
+            </div>
+
+            <datatable [rows]="languages">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th prop="languageCode" class="text-center">{{ 'label.DBRT01.LanguageCode' | translate}} </th>
+                        <th prop="description" class="text-center">{{ 'label.DBRT01.Description' | translate }} </th>
+                        <th prop="active" class="text-center">{{ 'label.ALL.Active' | translate }} </th>
+                        <th class="text-center">{{ 'label.ALL.Delete' | translate }}</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-row>
+                    <tr>
+                        <td class="text-center">
+                            <a [routerLink]="['detail']" [state]="{ languageCode: row.languageCode }">
+                                <b>{{row.languageCode}}</b>
+                            </a>
+                        </td>
+                        <td>{{row.description}}</td>
+                        <td class="text-center text-green-600 w-1">
+                            @if(row.active){
+                            <i class="pi pi-check"></i>
+                            }
+                        </td>
+                        <td class="text-center w-1">
+                            <button icon="pi pi-trash" severity="danger" (click)="delete(row.languageCode)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </datatable>
+        </div>
+    </div>
+</div>

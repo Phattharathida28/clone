@@ -1,0 +1,169 @@
+<div class="grid p-fluid">
+    <div class="col-12 md:col-6">
+        <div class="card">
+            <h5>InputText</h5>
+            <div class="grid formgrid">
+                <div class="col-12 mb-2 lg:col-4 lg:mb-0">
+                    <textbox placeholder="Default" [hasLabel]="false"></textbox>
+                </div>
+                <div class="col-12 mb-2 lg:col-4 lg:mb-0">
+                    <textbox placeholder="Disabled" [hasLabel]="false" [disabled]="true"></textbox>
+                </div>
+                <div class="col-12 mb-2 lg:col-4 lg:mb-0">
+                    <textbox placeholder="Invalid" [hasLabel]="false" class="ng-dirty ng-invalid"></textbox>
+                </div>
+            </div>
+
+            <h5>Icons</h5>
+            <div class="grid formgrid">
+                <div class="col-12 mb-2 lg:col-6 lg:mb-0">
+                    <textbox placeholder="Username" icon="pi pi-user" [hasLabel]="false"></textbox>
+                </div>
+                <div class="col-12 mb-2 lg:col-6 lg:mb-0">
+                    <textbox placeholder="Search" icon="pi pi-search" iconPosition="right" [hasLabel]="false"></textbox>
+                </div>
+            </div>
+
+            <h5>Float Label</h5>
+            <div [formGroup]="form">
+                <textbox formControlName="float" icon="pi pi-user" [floatLabel]="true">Username</textbox>
+            </div>
+
+            <h5>Textarea</h5>
+            <areabox [rows]="5" placeholder="Your Message"></areabox>
+
+            <h5>AutoComplete</h5>
+            <autocomplete [items]="autocompleteItem" [floatLabel]="true" [hasLabel]="false" [dropdown]="true">
+            </autocomplete>
+
+            <h5>Calendar</h5>
+            <calendar [hasLabel]="false"></calendar>
+
+            <h5>InputNumber</h5>
+            <number [showButtons]="true" [min]="0" [max]="100" [hasLabel]="false"></number>
+
+            <h5>Chips</h5>
+            <chips [hasLabel]="false"></chips>
+        </div>
+
+        <div class="card">
+            <div class="grid">
+                <div class="col-12" [formGroup]="form">
+                    <h5>Slider</h5>
+                    <slider formControlName="slider" [disabled]="true"></slider>
+
+                    <h5>Slider Range</h5>
+                    <slider formControlName="sliderRange" [range]="true"></slider>
+
+                    <h5>Slider vertical</h5>
+                    <slider formControlName="slider" [orientation]="'vertical'"></slider>
+                </div>
+                <div class="col-12 md:col-4" [formGroup]="form">
+                    <h5>Rating</h5>
+                    <rating formControlName="rating"></rating>
+                </div>
+                <div class="col-12 md:col-4" [formGroup]="form">
+                    <h5>ColorPicker</h5>
+                    <colorpicker formControlName="colorpicker"></colorpicker>
+                </div>
+                <div class="col-12 md:col-4" [formGroup]="form">
+                    <h5>ColorPicker Inline</h5>
+                    <colorpicker formControlName="colorpicker" [inline]="true"></colorpicker>
+                </div>
+                <div class="col-12 md:col-6" [formGroup]="form">
+                    <h5>Knob</h5>
+                    <knob formControlName="knob"></knob>
+                </div>
+                <div class="col-12 md:col-6" [formGroup]="form">
+                    <h5>Knob Custom Template</h5>
+                    <knob formControlName="knob" valueTemplate="[value] %"></knob>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-6">
+        <div class="card" [formGroup]="form">
+            <h5>RadioButton</h5>
+            <radio formControlName="radio" [items]="items"></radio>
+
+            <h5>Checkbox</h5>
+            <checkbox formControlName="checkbox" [items]="items"></checkbox>
+
+            <h5>Input Switch</h5>
+            <switch formControlName="switch"></switch>
+        </div>
+
+        <div class="card">
+            <h5>Listbox</h5>
+            <listbox [items]="items"></listbox>
+
+            <h5>Listbox Multiple</h5>
+            <listbox [items]="items" [multiple]="true"></listbox>
+
+            <h5>Dropdown</h5>
+            <dropdown [items]="items" placeholder="Select a Item" [showClear]="true" [hasLabel]="false"></dropdown>
+
+            <h5>Multiselect</h5>
+            <multiselect [items]="items" placeholder="Select a Item">
+            </multiselect>
+        </div>
+
+        <div class="card">
+            <h5>ToggleButton</h5>
+            <div [formGroup]="form" class="w-2">
+                <togglebutton formControlName="togglebutton" onLabel="Yes" offLabel="No"></togglebutton>
+            </div>
+
+            <h5>SelectOneButton</h5>
+            <div [formGroup]="form">
+                <selectbutton formControlName="selectbutton" [items]="items"></selectbutton>
+            </div>
+
+            <h5>SelectManyButton</h5>
+            <div [formGroup]="form">
+                <selectbutton formControlName="selectbuttonmulti" [items]="items" [multiple]="true"></selectbutton>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="card">
+            <h5>InputGroup</h5>
+            <div class="grid">
+                <div class="col-12 md:col-6">
+                    <inputgroup placeholder="Username">
+                        <p-inputGroupAddon class="before-input">
+                            <i class="pi pi-user"></i>
+                        </p-inputGroupAddon>
+                    </inputgroup>
+                </div>
+                <div class="col-12 md:col-6">
+                    <inputgroup placeholder="Price">
+                        <p-inputGroupAddon class="before-input">
+                            <i class="pi pi-tags" style="line-height: 1.25"></i>
+                        </p-inputGroupAddon>
+
+                        <p-inputGroupAddon class="before-input">
+                            <i class="pi pi-shopping-cart" style="line-height: 1.25"></i>
+                        </p-inputGroupAddon>
+                        <p-inputGroupAddon class="after-input">$</p-inputGroupAddon>
+                        <p-inputGroupAddon class="after-input">.00</p-inputGroupAddon>
+                    </inputgroup>
+                </div>
+                <div class="col-12 md:col-6">
+                    <inputgroup placeholder="Keyword">
+                        <button label="Search" class="before-input"></button>
+                    </inputgroup>
+                </div>
+                <div class="col-12 md:col-6" [formGroup]="form">
+                    <inputgroup placeholder="Username">
+                        <p-inputGroupAddon class="before-input">
+                            <checkbox formControlName="inputgroupCheckbox"></checkbox>
+                        </p-inputGroupAddon>
+                    </inputgroup>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

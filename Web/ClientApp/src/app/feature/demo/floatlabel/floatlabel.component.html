@@ -1,0 +1,50 @@
+<div class="card">
+    <h5>{{ 'label.DEMO.FloatLabel' | translate }}</h5>
+    <p>
+        All input text components support floating labels by adding
+        (<mark>[floatLabel]="true"</mark>) to attribute component
+    </p>
+    <div class="grid p-fluid mt-3">
+        <div class="field col-12 md:col-4">
+            <textbox [floatLabel]="true">{{ 'label.DEMO.InputText' | translate }}</textbox>
+        </div>
+        <div class="field col-12 md:col-4">
+            <autocomplete [floatLabel]="true" [items]="autocompleteItems">{{ 'label.DEMO.AutoComplete' | translate }}</autocomplete>
+        </div>
+        <div class="field col-12 md:col-4">
+            <textbox [floatLabel]="true" icon="pi pi-search">{{ 'label.DEMO.LeftIcon' | translate }}</textbox>
+        </div>
+        <div class="field col-12 md:col-4">
+            <textbox [floatLabel]="true" icon="pi pi-spin pi-spinner" iconPosition="right">{{ 'label.DEMO.RightIcon' | translate }}</textbox>
+        </div>
+        <div class="field col-12 md:col-4">
+            <calendar [floatLabel]="true">{{ 'label.DEMO.Calendar' | translate }}</calendar>
+        </div>
+        <div class="field col-12 md:col-4">
+            <chips [floatLabel]="true">{{ 'label.DEMO.Chips' | translate }}</chips>
+        </div>
+        <div class="field col-12 md:col-4">
+            <mask [floatLabel]="true" mask="99/99/9999">{{ 'label.DEMO.InputMask' | translate }}</mask>
+        </div>
+        <div class="field col-12 md:col-4">
+            <number [floatLabel]="true">{{ 'label.DEMO.InputNumber' | translate }}</number>
+        </div>
+        <div class="field col-12 md:col-4">
+            <inputgroup [floatLabel]="true">
+                <p-inputGroupAddon class="before-input">
+                    <i class="pi pi-user"></i>
+                </p-inputGroupAddon>
+                {{ 'label.DEMO.InputGroup' | translate }}
+            </inputgroup>
+        </div>
+        <div class="field col-12 md:col-4">
+            <dropdown [items]="items" [floatLabel]="true" [filter]="false">{{ 'label.DEMO.Dropdown' | translate }}</dropdown>
+        </div>
+        <div class="field col-12 md:col-4">
+            <multiselect [items]="items" [floatLabel]="true" [filter]="false">{{ 'label.DEMO.MultiSelect' | translate }}</multiselect>
+        </div>
+        <div class="field col-12 md:col-4">
+            <areabox [floatLabel]="true">{{ 'label.DEMO.Textarea' | translate }}</areabox>
+        </div>
+    </div>
+</div>

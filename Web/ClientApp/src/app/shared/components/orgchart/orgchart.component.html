@@ -1,0 +1,20 @@
+<div class="grid">
+    <div class="box-employees col-10" pDroppable (onDrop)="drop()">
+        <p-organizationChart [value]="data" selectionMode="multiple" [(selection)]="selectedNodes" >
+            <ng-template let-node pTemplate="person">
+                <div class="p-2 text-center" draggableNodes="true" droppableNodes="true" pDraggable pDroppable (onDrop)="drop(node)" (onDragStart)="dragStart(node)">
+                    <img [src]="node.data.image" class="mb-3 w-3rem h-3rem" />
+                    <div class="font-bold">{{ node.data.name }}</div>
+                    <div>{{ node.data.title }}</div>
+                </div>
+            </ng-template>
+        </p-organizationChart>
+    </div>
+    <div class="box-employees col-2" pDroppable (onDrop)="dropEmployee()">
+        @for (employee of employees; track $index) {
+            <div class="mt-2">
+                <button pDraggable (onDragStart)="dragStart(employee)"><img [src]="employee.data.image" alt="">{{employee.data.name}}</button>
+            </div>
+        }
+    </div>
+</div>

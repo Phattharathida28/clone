@@ -1,0 +1,56 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <h5>Basic Table</h5>
+            <datatable [rows]="data">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th prop="column1" class="text-center">Column1 </th>
+                        <th prop="column2" class="text-center">Column2 </th>
+                        <th prop="column3" class="text-center">Column3 </th>
+                        <th prop="column4" class="text-center">Column4 </th>
+                        <th prop="column5" class="text-center">Column5 </th>
+                        <th prop="column6" class="text-center">Column6 </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-row>
+                    <tr>
+                        <td class="text-center w-2">{{row.column1}}</td>
+                        <td>{{row.column2}}</td>
+                        <td>{{row.column3}}</td>
+                        <td>{{row.column4}}</td>
+                        <td>{{row.column5}}</td>
+                        <td class="text-right">{{row.column6}}</td>
+                    </tr>
+                </ng-template>
+            </datatable>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <h5>Table Empty</h5>
+            <datatable [rows]="[]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th prop="column1" class="text-center">Column1 </th>
+                        <th prop="column2" class="text-center">Column2 </th>
+                        <th prop="column3" class="text-center">Column3 </th>
+                        <th prop="column4" class="text-center">Column4 </th>
+                        <th prop="column5" class="text-center">Column5 </th>
+                        <th prop="column6" class="text-center">Column6 </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-row>
+                    <tr>
+                        <td class="text-center w-2">{{row.column1}}</td>
+                        <td>{{row.column2}}</td>
+                        <td>{{row.column3}}</td>
+                        <td>{{row.column4}}</td>
+                        <td>{{row.column5}}</td>
+                        <td class="text-right">{{row.column6}}</td>
+                    </tr>
+                </ng-template>
+            </datatable>
+        </div>
+    </div>
+</div>

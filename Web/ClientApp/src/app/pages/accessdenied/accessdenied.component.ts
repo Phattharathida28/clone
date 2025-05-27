@@ -1,0 +1,36 @@
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'x-accessdenied',
+    template: `
+    <div class="bg flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden m-0 p-0">
+        <div class="flex flex-column align-items-center justify-content-center">
+            <div
+                style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, rgba(247, 149, 48, 0.4) 10%, rgba(247, 149, 48, 0) 30%);">
+                <div class="w-full surface-card py-8 px-5 sm:px-8 flex flex-column align-items-center"
+                    style="border-radius:53px">
+                    <div class="grid flex flex-column align-items-center">
+                        <div class="flex justify-content-center align-items-center bg-orange-500 border-circle"
+                            style="width:3.2rem; height:3.2rem;">
+                            <i class="text-50 pi pi-fw pi-lock text-2xl"></i>
+                        </div>
+                        <h1 class="text-900 font-bold text-4xl lg:text-5xl mb-2">Access Denied</h1>
+                        <span class="text-600 mb-5">You do not have the necessary permisions. Please contact admins.</span>
+                        <img src="assets/pages/images/asset-access.svg" alt="Access denied" class="mb-5" width="80%">
+                        <button icon="pi pi-arrow-left" label="Go to Dashboard" class="p-button-text"
+                            [routerLink]="['/']"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  `,
+    styles: [`
+    .bg {
+      background: var(--main-bg) no-repeat center center fixed
+    }
+  `]
+})
+export class AccessdeniedComponent {
+
+}

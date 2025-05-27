@@ -1,0 +1,61 @@
+<div class="grid">
+    <div class="col-12 flex flex-wrap gap-3 justify-content-between flex-column lg:flex-row lg:p-fluid">
+        <breadcrumb [items]="breadcrumbItems"></breadcrumb>
+        <button [label]="'label.ALL.Save' | translate" icon="pi pi-save" (click)="save()"></button>
+    </div>
+    <div class="col-12">
+        <p-fieldset [legend]="'label.SURT02.Detail' | translate" [toggleable]="true">
+            <div class="grid p-fluid" [formGroup]="form">
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="menuCode">{{ 'label.SURT02.MenuCode' | translate}}</textbox>
+                </div>
+                <div class="col-12 lg:col-3">
+                    <dropdown formControlName="mainMenu" [items]="master.mainMenu">
+                        {{ 'label.SURT02.MainMenu' | translate }}
+                    </dropdown>
+                </div>
+                <div class="col-12 lg:col-3">
+                    <dropdown formControlName="programCode" [items]="master.programCode">
+                        {{ 'label.SURT02.ProgramCode' | translate }}
+                    </dropdown>
+                </div>
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="icon">
+                        {{ 'label.ALL.Icon' | translate }}
+                    </textbox>
+                </div>
+                <div class="flex flex-wrap align-items-end col-12 lg:col-3">
+                    <checkbox formControlName="active" [label]="'label.ALL.Active' | translate">
+                    </checkbox>
+                </div>
+            </div>
+        </p-fieldset>
+    </div>
+
+    <div class="col-12">
+        <p-fieldset [legend]="'label.SURT01.LanguageDetail' | translate" [toggleable]="true">
+            <datatable [rows]="master.langs">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th class="text-center w-3">
+                            {{ 'label.SURT02.LanguageName' | translate}}
+                        </th>
+                        <th class="text-center">
+                            {{ 'label.SURT02.Name' | translate }}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-row>
+                    <tr>
+                        <td>
+                            {{ row.label }}
+                        </td>
+                        <td [formGroup]="menuLabel[row.value]?.form">
+                            <textbox formControlName="menuName" [hasLabel]="false"></textbox>
+                        </td>
+                    </tr>
+                </ng-template>
+            </datatable>
+        </p-fieldset>
+    </div>
+</div>

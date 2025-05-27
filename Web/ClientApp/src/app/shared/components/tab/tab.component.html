@@ -1,0 +1,7 @@
+<p-tabView (onChange)="onChange()" #tab orientation="left">
+    @for (item of items; track $index) {
+    <p-tabPanel [header]="item.label | translate">
+        <ng-container *ngTemplateOutlet="contentTemplate;context:{item: item}"></ng-container>
+    </p-tabPanel>
+    }
+</p-tabView>

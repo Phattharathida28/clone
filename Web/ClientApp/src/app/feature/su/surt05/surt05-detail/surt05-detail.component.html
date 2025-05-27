@@ -1,0 +1,35 @@
+<div class="grid">
+    <div class="col-12 flex flex-wrap gap-3 justify-content-between flex-column lg:flex-row lg:p-fluid">
+        <breadcrumb [items]="breadcrumbItems"></breadcrumb>
+        <button [label]="'label.ALL.Save' | translate" icon="pi pi-save" (click)="save()"></button>
+    </div>
+    <div class="col-12">
+        <p-fieldset [legend]="'label.SURT05.Detail' | translate" [toggleable]="true">
+            <div class="grid p-fluid" [formGroup]="form">
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="messageCode">{{ 'label.SURT05.MessageCode' | translate}}</textbox>
+                </div>
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="messageDesc">
+                        {{ 'label.SURT05.MessageDesc' | translate }}
+                    </textbox>
+                </div>
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="remark">
+                        {{ 'label.SURT05.Remark' | translate }}
+                    </textbox>
+                </div>
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="messageCodeTh">
+                        {{ 'label.SURT05.LanguageCodeTH' | translate }}
+                    </textbox>
+                </div>
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="messageCodeEn">
+                        {{ 'label.SURT05.LanguageCodeEN' | translate }}
+                    </textbox>
+                </div>
+            </div>
+        </p-fieldset>
+    </div>
+</div>

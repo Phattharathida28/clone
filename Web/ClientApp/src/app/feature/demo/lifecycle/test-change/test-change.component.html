@@ -1,0 +1,29 @@
+<div class="grid">
+    <div class="col-6">
+        <div class="card">
+            <h5>Life Cycle Angular</h5>
+            <div class="mt-2">
+                <checkbox [value]="docheckState" [label]="'Run DoCheck Alway'" (click)="docheckState = !docheckState"></checkbox>
+            </div>
+            <div class="mt-2" >
+                <checkbox [value]="ngAfterViewChecked" [label]="'Run AfterContentChecked Alway'" (click)="afterViewCheckedState = !afterViewCheckedState"></checkbox>
+            </div>
+            <div class="mt-2" >
+                <checkbox [value]="afterContentCheckedState" [label]="'Run AfterContentChecked Alway'" (click)="afterContentCheckedState = !afterContentCheckedState"></checkbox>
+            </div>
+            <button (click)="destroyPage()" class="mr-2" severity="danger">Destroy Page</button><button class="mt-4" (click)="reset()" severity="warning">Reset LifeCycle</button>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card terminal-box">
+            <h5>Terminal</h5>
+            @for (lifeCycle of lifeCycleArr; track $index) {
+                @if(lifeCycle){
+                    <p>{{$index+1}}. {{lifeCycle}}</p>
+                }
+            }@empty {
+                <h6 class="text-center">No Data</h6>
+            }
+        </div>
+    </div>
+</div>

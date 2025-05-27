@@ -1,0 +1,39 @@
+<div class="grid">
+    <div class="col-6">
+        <div class="card">
+            <h5>String Interpolation</h5>
+            {{'{{interpolation}}'}}
+
+            <h5>Property Binding</h5>
+            &lt;input [value]="data">
+
+            <h5>Event Binding</h5>
+            &lt;button (click)='state = !state'>Click&lt;/button>
+
+            <h5>Two-Way Binding</h5>
+            &lt;input type="text" [(ngModel)]="twoway">
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <h5>String Interpolation Output</h5>
+            {{interpolation}}
+            <h5>Property Binding Output</h5>
+            <textbox [value]="data"></textbox>
+            <h5>Event Binding Output</h5>
+            <div class="grid">
+                <div class="col-3 flex align-items-center justify-content-center">State : {{state}}</div>
+                <div class="col-2">
+                    <button (click)="state = !state">Click</button>
+                </div>
+            </div>
+            <h5>Two-Way Binding Output</h5>
+            <div class="grid">
+                <div class="col-12 flex flex-column justify-content-center">
+                    Output : {{twoway}}
+                    <textbox type="text" [(ngModel)]="twoway"></textbox>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <h5>{{ 'label.SURT01.ProgramManagement' | translate }}</h5>
+            <div class="flex flex-wrap py-4 justify-content-between gap-3 flex-column lg:flex-row lg:p-fluid">
+                <textbox [placeholder]="'label.ALL.Search' | translate" icon="pi pi-search" [hasLabel]="false" [(ngModel)]="resetSerch"
+                    (onInput)="search($event)" class="w-full lg:w-6">
+                </textbox>
+                <button icon="pi pi-plus" severity="success" [label]="'label.ALL.Add' | translate" [routerLink]="['detail']"></button>
+            </div>
+
+            <datatable [rows]="programs">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th prop="programCode" class="text-center">{{ 'label.SURT01.ProgramCode' | translate}} </th>
+                        <th prop="programName" class="text-center">{{ 'label.SURT01.ProgramName' | translate }} </th>
+                        <th prop="programPath" class="text-center">{{ 'label.SURT01.ProgramPath' | translate }} </th>
+                        <th prop="moduleCode" class="text-center">{{ 'label.SURT01.ModuleCode' | translate }} </th>
+                        <th class="text-center">{{ 'label.ALL.Delete' | translate }}</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-row>
+                    <tr>
+                        <td class="text-center">
+                            <a [routerLink]="['detail']" [state]="{ programCode: row.programCode }">
+                                {{row.programCode}}
+                            </a>
+                        </td>
+                        <td>{{row.programName}}</td>
+                        <td>{{row.programPath}}</td>
+                        <td>{{row.moduleCode}}</td>
+                        <td class="text-center w-1">
+                            <button icon="pi pi-trash" severity="danger" (click)="delete(row.programCode)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </datatable>
+        </div>
+    </div>
+</div>

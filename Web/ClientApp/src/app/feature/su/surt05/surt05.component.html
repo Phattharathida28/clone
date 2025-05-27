@@ -1,0 +1,42 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <h5>{{ 'label.SURT05.ProgramName' | translate }}</h5>
+            <div class="flex flex-wrap py-4 justify-content-between gap-3 flex-column lg:flex-row lg:p-fluid"> 
+                <textbox [placeholder]="'label.ALL.Search' | translate" icon="pi pi-search" [hasLabel]="false" [(ngModel)]="resetSerch"
+                    (onInput)="search($event)" class="w-full lg:w-6">
+                </textbox>
+                <!-- <button icon="pi pi-plus" [label]="'label.ALL.Add' | translate" [routerLink]="['detail']"></button> -->
+            </div>
+
+            <datatable [rows]="messages">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th prop="messageCode" class="text-center">{{ 'label.SURT05.MessageCode' | translate}} </th>
+                        <th prop="messageDesc" class="text-center">{{ 'label.SURT05.MessageDesc' | translate}} </th>
+                        <th prop="remark" class="text-center">{{ 'label.SURT05.Remark' | translate }} </th>
+                        <!-- <th class="text-center">{{ 'label.ALL.Delete' | translate }}</th> -->
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-row>
+                    <tr>
+                        <td class="text-center">
+                            <a [routerLink]="['detail']" [state]="{ messageCode: row.messageCode}">
+                                {{ row.messageCode }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ row.messageDesc }}
+                        </td>
+                        <td>
+                            {{ row.remark }}
+                        </td>
+                        <!-- <td class="text-center w-1">
+                            <button icon="pi pi-trash" (click)="delete(row.messageCode)"></button>
+                        </td> -->
+                    </tr>
+                </ng-template>
+            </datatable>
+        </div>
+    </div>
+</div>

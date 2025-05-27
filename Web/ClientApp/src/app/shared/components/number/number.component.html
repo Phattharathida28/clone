@@ -1,0 +1,60 @@
+<div class="flex flex-column gap-2">
+    @if(!floatLabel){
+    @if(axis == "vertical"){
+    @if(hasLabel){
+    <ng-container *ngTemplateOutlet="label"></ng-container>
+    }
+    <p-inputNumber [(ngModel)]="value" [inputStyleClass]="class" mode="decimal" [min]="min" [max]="max"
+        [minFractionDigits]="minFractionDigits" [maxFractionDigits]="maxFractionDigits"
+        (onInput)="inputData(this.value)" (onBlur)="inputData(this.value)" [disabled]="disabled"
+        [placeholder]="placeholder" [showButtons]="showButtons" [class.ng-invalid]="hasErrors"
+        [class.ng-dirty]="hasErrors">
+    </p-inputNumber>
+    }
+    @else {
+    <div class="grid">
+        <div class="col-12 mb-2 md:col-2 md:mb-0 flex align-items-center">
+            <ng-container *ngTemplateOutlet="label"></ng-container>
+        </div>
+        <div class="col-12 md:col-10">
+            <p-inputNumber [(ngModel)]="value" [inputStyleClass]="class" mode="decimal" [min]="min" [max]="max"
+                [minFractionDigits]="minFractionDigits" [maxFractionDigits]="maxFractionDigits"
+                (onInput)="inputData(this.value)" (onBlur)="inputData(this.value)" [disabled]="disabled"
+                [class.ng-invalid]="hasErrors" [placeholder]="placeholder" [showButtons]="showButtons">
+            </p-inputNumber>
+        </div>
+    </div>
+    }
+    }
+    @else {
+    <span class="p-float-label">
+        <p-inputNumber [(ngModel)]="value" [inputStyleClass]="class" mode="decimal" [min]="min" [max]="max"
+            [minFractionDigits]="minFractionDigits" [maxFractionDigits]="maxFractionDigits"
+            (onInput)="inputData(this.value)" (onBlur)="inputData(this.value)" [disabled]="disabled"
+            [class.ng-dirty]="hasErrors" [placeholder]="placeholder" [showButtons]="showButtons">
+        </p-inputNumber>
+        <ng-container *ngTemplateOutlet="label"></ng-container>
+    </span>
+    }
+</div>
+<small *ngIf="helpText" [class]="helpTextClass">{{helpText}}</small>
+@if(hasErrors){
+<small class="text-red-600" *ngIf="control.hasError('required') || control.hasError('empty')">
+    {{ 'message.STD00007' | translate }}
+</small>
+<small class="text-red-600" *ngIf="control.hasError('min')">
+    {{'message.STD00021' | translate: { '0' : control?.errors["min"]?.min | translate } }}
+</small>
+<small class="text-red-600" *ngIf="control.hasError('max')">
+    {{'message.STD00020' | translate:{ '0' : control?.errors["max"]?.max | translate } }}
+</small>
+}
+
+<ng-template #label>
+    <label>
+        @if(required){
+        <span class="text-red-600">* </span>
+        }
+        <ng-content></ng-content>
+    </label>
+</ng-template>

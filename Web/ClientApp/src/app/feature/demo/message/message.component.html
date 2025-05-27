@@ -1,0 +1,39 @@
+<div class="grid">
+    <div class="col-12 lg:col-6">
+        <div class="card">
+            <h5>Toast</h5>
+            <div class="flex flex-wrap gap-2">
+                <button type="button" (click)="showSuccessViaToast()" label="Success" class="p-button-success"></button>
+                <button type="button" (click)="showInfoViaToast()" label="Info" class="p-button-info"></button>
+                <button type="button" (click)="showWarnViaToast()" label="Warn" class="p-button-warning"></button>
+                <button type="button" (click)="showErrorViaToast()" label="Error" class="p-button-danger"></button>
+            </div>
+
+            <h5>Toast Position</h5>
+            <div class="flex flex-wrap gap-2">
+                <button type="button" (click)="showSuccessViaToast('tl')" label="Top left"
+                    class="p-button-success"></button>
+                <button type="button" (click)="showInfoViaToast('tc')" label="Top center"
+                    class="p-button-info"></button>
+                <button type="button" (click)="showWarnViaToast('tr')" label="Top right"
+                    class="p-button-warning"></button>
+                <button type="button" (click)="showErrorViaToast('bl')" label="Bottom left"
+                    class="p-button-danger"></button>
+                <button type="button" (click)="showSuccessViaToast('bc')" label="Bottom center"
+                    class="p-button-success"></button>
+                <button type="button" (click)="showInfoViaToast('br')" label="Bottom right"
+                    class="p-button-info"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 lg:col-6">
+        <div class="card">
+            <h5>Help Text</h5>
+            <div class="field p-fluid">
+                <textbox class="ng-dirty ng-invalid" helpText="Enter your username to reset your password."
+                    helpTextClass="text-red-600">Username</textbox>
+            </div>
+        </div>
+    </div>
+</div>

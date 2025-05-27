@@ -1,0 +1,27 @@
+.align-end{
+  display: flex;
+  align-items: end;
+}
+
+.align-center{
+  display: flex;
+  align-items: center;
+}
+.width-max-auto{
+  ::ng-deep .p-autocomplete{
+    width: 100% !important;
+  }
+}
+
+.margin-top-1{
+  margin-top: 1rem;
+}
+
+p{
+  margin: 0 !important;
+}
+
+.adjust-row{
+  height:65px;
+  padding-top:12px
+}

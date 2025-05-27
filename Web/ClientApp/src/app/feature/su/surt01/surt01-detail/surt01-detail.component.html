@@ -1,0 +1,62 @@
+<div class="grid">
+    <div class="col-12 flex flex-wrap gap-3 justify-content-between flex-column lg:flex-row lg:p-fluid">
+        <breadcrumb [items]="breadcrumbItems"></breadcrumb>
+        <button [label]="'label.ALL.Save' | translate" icon="pi pi-save" (click)="save()"></button>
+    </div>
+    <div class="col-12">
+        <p-fieldset [legend]="'label.SURT01.Detail' | translate" [toggleable]="true">
+            <div class="grid p-fluid" [formGroup]="form">
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="programCode">{{ 'label.SURT01.ProgramCode' | translate}}</textbox>
+                </div>
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="programName">{{ 'label.SURT01.ProgramName' | translate }}</textbox>
+                </div>
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="programPath">{{ 'label.SURT01.ProgramPath' | translate }}</textbox>
+                </div>
+                <div class="col-12 lg:col-3">
+                    <dropdown formControlName="moduleCode" [items]="master.modules">{{ 'label.SURT01.ModuleCode' |
+                        translate }}</dropdown>
+                </div>
+            </div>
+
+        </p-fieldset>
+    </div>
+    <div class="col-12">
+        <p-fieldset [legend]="'label.SURT01.ProgramDetail' | translate" [toggleable]="true">
+            <tab [items]="master.lang">
+                <ng-template pTemplate="content" let-item="item">
+                    <div class="py-4 flex flex-wrap justify-content-end gap-3 flex-column md:flex-row md:p-fluid">
+                        <button icon="pi pi-copy" [class.hidden]="!program.programCode"
+                            [label]="'label.ALL.Copy' | translate" (click)="copy(item.value)"></button>
+                        <button icon="pi pi-plus" [label]="'label.ALL.Add' | translate"
+                            (click)="add(item.value)"></button>
+                    </div>
+                    <datatable [rows]="program[item.value]">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th prop="fieldName" class="text-center">{{ 'label.SURT01.Field' | translate}} </th>
+                                <th prop="labelName" class="text-center">{{ 'label.SURT01.Label' | translate }} </th>
+                                <th class="text-center">{{ 'label.ALL.Delete' | translate }}</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-row>
+                            <tr>
+                                <td [formGroup]="row.form">
+                                    <textbox formControlName="fieldName" [hasLabel]="false"></textbox>
+                                </td>
+                                <td [formGroup]="row.form">
+                                    <textbox formControlName="labelName" [hasLabel]="false"></textbox>
+                                </td>
+                                <td class="text-center w-10rem">
+                                    <button icon="pi pi-trash" (click)="remove(row, item.value)"></button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </datatable>
+                </ng-template>
+            </tab>
+        </p-fieldset>
+    </div>
+</div>

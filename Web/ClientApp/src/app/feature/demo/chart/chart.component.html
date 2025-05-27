@@ -1,0 +1,37 @@
+<div class="grid p-fluid">
+    <div class="col-12 lg:col-6">
+        <div class="card">
+            <h5>{{ 'label.DEMO.LinearChart' | translate }}</h5>
+            <p-chart type="line" [data]="lineData" [options]="lineOptions"></p-chart>
+        </div>
+
+        <div class="card flex flex-column align-items-center">
+            <h5 class="text-left w-full">{{ 'label.DEMO.PieChart' | translate }}</h5>
+            <p-chart type="pie" [data]="pieData" [options]="pieOptions"></p-chart>
+        </div>
+
+        <div class="card flex flex-column align-items-center">
+            <h5 class="text-left w-full">{{ 'label.DEMO.PolarAreaChart' | translate }}</h5>
+            <p-chart type="polarArea" [data]="polarData" [options]="polarOptions"></p-chart>
+        </div>
+    </div>
+    <div class="col-12 lg:col-6">
+        <div class="card">
+            <h5>{{ 'label.DEMO.BarChart' | translate }}</h5>
+            <p-chart type="bar" [data]="barData" [options]="barOptions"></p-chart>
+        </div>
+
+        <div class="card flex flex-column align-items-center">
+            <h5 class="text-left w-full">{{ 'label.DEMO.DoughnutChart' | translate }}</h5>
+            <p-chart type="doughnut" [data]="pieData" [options]="pieOptions"></p-chart>
+        </div>
+
+        <div class="card flex flex-column align-items-center">
+            <h5 class="text-left w-full">{{ 'label.DEMO.RadarChart' | translate }}</h5>
+            <p-chart type="radar" [data]="radarData" [options]="radarOptions"></p-chart>
+        </div>
+    </div>
+    <div class="col-12">
+        <orgchart></orgchart>
+    </div>
+</div>

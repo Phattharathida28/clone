@@ -1,0 +1,26 @@
+<div class="grid">
+    <div class="col-12 md:col-4">
+        <div class="card" [formGroup]="form">
+            <h5>Attachment all type</h5>
+            <attachment formControlName="all" [hasLabel]="false"></attachment>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-4">
+        <div class="card" [formGroup]="form">
+            <h5>Images</h5>
+            <attachment formControlName="image" [accept]="imageOnly" helpText="** jpg, gif, svg, png, jpeg"
+                [hasLabel]="false">
+            </attachment>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-4">
+        <div class="card" [formGroup]="form">
+            <h5>Word Excel PDF Powerpoint</h5>
+            <attachment formControlName="application" [accept]="application" helpText="** docx, xlsx, pdf, pptx"
+                [hasLabel]="false">
+            </attachment>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="grid">
+    <div class="col-12 flex flex-wrap gap-3 justify-content-between flex-column lg:flex-row lg:p-fluid">
+        <breadcrumb [items]="breadcrumbItems"></breadcrumb>
+        <button [label]="'label.ALL.Save' | translate" icon="pi pi-save" (click)="save()"></button>
+    </div>
+    <div class="col-12">
+        <p-fieldset [legend]="'label.SURT01.Detail' | translate" [toggleable]="true">
+            <div class="grid p-fluid" [formGroup]="form">
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="parameterGroupCode">{{ 'label.SURT06.ParameterGroupCode' | translate}}
+                    </textbox>
+                </div>
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="parameterCode">{{ 'label.SURT06.ParameterCode' | translate }}</textbox>
+                </div>
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="parameterValue">{{ 'label.SURT06.ParameterValue' | translate }}</textbox>
+                </div>
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="remark">{{ 'label.SURT06.Remark' | translate }}</textbox>
+                </div>
+            </div>
+
+        </p-fieldset>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="flex gap-3" [class.flex-column]="vertical">
+    @for (item of items; track $index) {
+    <div class="field-checkbox">
+        <p-checkbox [label]="item.label" [value]="item.value" [(ngModel)]="value"
+            [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''" [disabled]="disabled"
+            (onChange)="onCheckboxChange($event)">
+        </p-checkbox>
+    </div>
+    }
+    @empty {
+    <p-checkbox [label]="label" [(ngModel)]="value" [binary]="true" [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''"
+        [disabled]="disabled" (onChange)="onCheckboxChange($event)"></p-checkbox>
+    }
+</div>
+@if(hasErrors){
+<small class="text-red-600" *ngIf="control.hasError('required') || control.hasError('empty')">
+    {{ 'message.STD00007' | translate }}
+</small>
+}

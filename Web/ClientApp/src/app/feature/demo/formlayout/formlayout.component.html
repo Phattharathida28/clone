@@ -1,0 +1,86 @@
+<div class="grid">
+    <div class="col-12 md:col-6">
+        <div class="card p-fluid">
+            <h5>{{ 'label.DEMO.Vertical' | translate }}</h5>
+            <div class="field">
+                <textbox>{{ 'label.DEMO.Name' | translate }}</textbox>
+            </div>
+            <div class="field">
+                <textbox>{{ 'label.DEMO.Email' | translate }}</textbox>
+            </div>
+            <div class="field">
+                <textbox>{{ 'label.DEMO.Age' | translate }}</textbox>
+            </div>
+        </div>
+
+        <div class="card p-fluid">
+            <h5>{{ 'label.DEMO.VerticalGrid' | translate }}</h5>
+            <div class="p-formgrid grid">
+                <div class="field col">
+                    <textbox>{{ 'label.DEMO.Name' | translate }}</textbox>
+                </div>
+                <div class="field col">
+                    <textbox>{{ 'label.DEMO.Email' | translate }}</textbox>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-6">
+        <div class="card p-fluid">
+            <h5>{{ 'label.DEMO.Horizontal' | translate }}</h5>
+            <div class="field">
+                <textbox axis="horizontal">{{ 'label.DEMO.Name' | translate }}</textbox>
+            </div>
+            <div class="field">
+                <textbox axis="horizontal">{{ 'label.DEMO.Email' | translate }}</textbox>
+            </div>
+        </div>
+
+        <div class="card">
+            <h5>{{ 'label.DEMO.Inline' | translate }}</h5>
+            <div class="formgroup-inline">
+                <div class="field">
+                    <textbox [placeholder]="'label.DEMO.Firstname' | translate" [hasLabel]="false"></textbox>
+                </div>
+                <div class="field">
+                    <textbox [placeholder]="'label.DEMO.Lastname' | translate" [hasLabel]="false"></textbox>
+                </div>
+                <button [label]="'label.DEMO.Submit' | translate"></button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h5>{{ 'label.DEMO.HelpText' | translate }}</h5>
+            <div class="field p-fluid">
+                <textbox [helpText]="'label.DEMO.HelpTextRequiredUsernameAndPassword' | translate">{{ 'label.DEMO.Username' | translate }}</textbox>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="card">
+            <h5>{{ 'label.DEMO.Advanced' | translate }}</h5>
+            <div class="p-fluid p-formgrid grid">
+                <div class="field col-12 md:col-6">
+                    <textbox>{{ 'label.DEMO.Firstname' | translate }}</textbox>
+                </div>
+                <div class="field col-12 md:col-6">
+                    <textbox>{{ 'label.DEMO.Lastname' | translate }}</textbox>
+                </div>
+                <div class="field col-12">
+                    <areabox>{{ 'label.DEMO.Address' | translate }}</areabox>
+                </div>
+                <div class="field col-12 md:col-6">
+                    <textbox>{{ 'label.DEMO.City' | translate }}</textbox>
+                </div>
+                <div class="field col-12 md:col-3" [formGroup]="form">
+                    <dropdown [items]="dropdownItems" formControlName="f1">{{ 'label.DEMO.State' | translate }}</dropdown>
+                </div>
+                <div class="field col-12 md:col-3">
+                    <textbox>{{ 'label.DEMO.Zip' | translate }}</textbox>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

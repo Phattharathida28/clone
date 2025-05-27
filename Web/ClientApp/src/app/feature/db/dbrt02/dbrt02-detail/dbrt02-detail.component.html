@@ -1,0 +1,70 @@
+<div class="grid">
+    <div class="col-12 flex flex-wrap gap-3 justify-content-between flex-column lg:flex-row lg:p-fluid">
+        <breadcrumb [items]="breadcrumbItems"></breadcrumb>
+        <button [label]="'label.ALL.Save' | translate" icon="pi pi-save" (click)="save()"></button>
+    </div>
+    <div class="col-12">
+        <p-fieldset [legend]="'label.DBRT02.Detail' | translate" [toggleable]="true">
+            <div class="grid p-fluid" [formGroup]="form">
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="listItemGroupCode">{{ 'label.DBRT02.ListItemGroupCode' | translate}}
+                    </textbox>
+                </div>
+                <div class="col-12 lg:col-3">
+                    <textbox formControlName="listItemGroupName">{{ 'label.DBRT02.ListItemGroupName' | translate }}</textbox>
+                </div>
+            </div>
+
+        </p-fieldset>
+    </div>
+    <div class="col-12">
+        <p-fieldset [legend]="'label.DBRT02.ListItemGroupDetail' | translate" [toggleable]="true">
+            <div class="grid">
+                <div class="col-10"></div>
+                <div class="col-2  flex justify-content-end">
+                    <button (click)="addDetailForm()" icon="pi pi-plus" severity="success">{{'label.ALL.Add' | translate}}</button>
+                </div>
+            </div>
+            <datatable [rows]="listItem">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th class="text-center w-3">
+                            {{ 'label.DBRT02.ListItemCode' | translate}}
+                        </th>
+                        <th class="text-center">
+                            {{ 'label.DBRT02.ListItemNameTha' | translate }}
+                        </th>
+                        <th class="text-center">
+                            {{ 'label.DBRT02.ListItemNameEng' | translate }}
+                        </th>
+                        <th class="text-center">
+                            {{ 'label.DBRT02.Active' | translate }}
+                        </th>
+                        <th class="text-center">
+                            {{ 'label.ALL.Delete' | translate }}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-row let-rowIndex="rowIndex">
+                    <tr [formGroup]="row?.form">
+                        <td>
+                            <textbox formControlName="listItemCode" [hasLabel]="false"></textbox>
+                        </td>
+                        <td>
+                            <textbox formControlName="listItemNameTha" [hasLabel]="false"></textbox>
+                        </td>
+                        <td>
+                            <textbox formControlName="listItemNameEng" [hasLabel]="false"></textbox>
+                        </td>
+                        <td>
+                            <checkbox formControlName="active"></checkbox>
+                        </td>
+                        <td>
+                            <button icon="pi pi-trash" variant="outlined" severity="danger" (click)="removeDetailForm(rowIndex)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </datatable>
+        </p-fieldset> 
+    </div>
+</div>

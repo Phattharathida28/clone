@@ -1,0 +1,103 @@
+.table-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  min-height: 50px;
+}
+
+::ng-deep table.mat-table {
+  width: 100%;
+}
+
+/* Header Styles */
+::ng-deep .mat-header-row {
+  height: 40px;
+  min-height: 40px;
+}
+
+::ng-deep .mat-header-cell {
+  color: white !important;
+  background-color: #2c3e50 !important;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.35rem;
+
+  &.text-center .mat-sort-header-container {
+    justify-content: center;
+  }
+
+  &.text-end .mat-sort-header-container {
+    justify-content: end;
+  }
+
+  &.text-center .mat-sort-header-content {
+    margin-left: 18px;
+  }
+
+  &.require::after {
+    content: " *";
+    padding-left: 2px;
+    color: red;
+  }
+}
+
+/* Row Styles */
+::ng-deep .mat-row {
+  height: auto;
+
+  &:not(.example-detail-row) .mat-cell {
+    padding: 0.28rem 0.35rem;
+  }
+
+  &.highlight {
+    background-color: #e0f0ff !important; // ใช้สีจริงแทน lighten()
+    transition: all 0.3s;
+  }
+
+  &.odd {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  &.example-detail-row {
+    min-height: 0;
+
+    &.collapsed .mat-cell {
+      border-bottom-width: 0;
+    }
+  }
+}
+
+::ng-deep .mat-cell,
+::ng-deep .mat-footer-cell {
+  font-size: 13px;
+  vertical-align: top;
+
+  i.fa-check:not(.in-btn) {
+    color: blue;
+  }
+
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+
+  .btn i {
+    transition: all 0.3s;
+  }
+
+  .alert {
+    margin: 0.35rem;
+  }
+}
+
+/* Footer */
+::ng-deep .mat-footer-row {
+  height: 40px;
+}
+
+::ng-deep .mat-footer-cell {
+  font-size: 13px;
+  padding: 0.35rem;
+  font-weight: 500;
+}

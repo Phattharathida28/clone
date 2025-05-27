@@ -1,0 +1,15 @@
+<div class="flex gap-3" [class.flex-column]="vertical">
+    @for (item of items; track $index) {
+    <div class="field-checkbox">
+        <p-radioButton [name]="name" [value]="item.value" [(ngModel)]="value" (onClick)="onClick($event)"
+            [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''" [disabled]="disabled">
+        </p-radioButton>
+        <label class="ml-2">{{ item.label }}</label>
+    </div>
+    }
+</div>
+@if(hasErrors){
+<small class="text-red-600" *ngIf="control.hasError('required') || control.hasError('empty')">
+    {{ 'message.STD00007' | translate }}
+</small>
+}

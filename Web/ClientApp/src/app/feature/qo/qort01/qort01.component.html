@@ -1,0 +1,91 @@
+<h3>บันทึก Standard Price และ Price List</h3>
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <div [formGroup]="searchForm">
+                <div class="grid">
+                    <div class="col-6 align-end">
+                        <textbox [hasLabel]="false" [floatLabel]="true"
+                        class="w-full" formControlName="keyword">
+                            รหัสแฟ้มราคา, ชื่อแฟ้มราคา
+                        </textbox>
+                </div>
+                <div class="col-6">
+                    <p>ประเภทแฟ้มราคา</p>
+                    <radio formControlName="plTypeCode" [items]="plTypes"></radio>
+                </div> 
+                </div>
+                <div class="grid">
+                    <div class="col-5 align-end width-max-auto">
+                        <dropdown [items]="autocompleteItems" [floatLabel]="true"
+                        [hasLabel]="false" formControlName="currencyCode" class ="w-full">
+                            {{'สกุลเงิน' }}
+                        </dropdown>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <p>ประเภทภาษี</p>
+                    <radio formControlName="taxTypeCode" [items]="vatTypes"></radio>
+                </div>
+                <div class="grid">
+                    <div class="col-7 align-end width-max-auto margin-top-1">
+                        <dropdown [items]="autocompleteItems" [floatLabel]="true"
+                        [hasLabel]="false" formControlName="plId" class ="w-full">
+                            {{'รหัสแฟ้มราคา' }}
+                        </dropdown>
+                </div>
+                </div>
+                <div class="flex justify-content-search
+                align-items-center margin-top-1 gap-20">
+                    <button [label]="'ค้นหา' | translate"
+                    icon="pi pi-search" iconPos="left" (click)="search()"></button>
+                    <button [label]="'Clear'" (click)="clear()"></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-12">
+    <div class="card">
+      <!-- <h5>{{ 'label.SURT01.ProgramManagement' | translate }}</h5> -->
+      <div class="flex flex-wrap py-4 justify-content-between gap-3 flex-column lg:flex-row lg:p-fluid">
+        <h5>ข้อมูล Standard Price เเละ Price List</h5>
+        <button icon="pi pi-plus" [label]="'label.ALL.Add' | translate" [routerLink]="['detail']" severity="success"></button>
+      </div>
+      <app-table server [dataSource]="data" [columns]="displayedColumns">
+        <ng-container matSort>
+          <ng-container matColumnDef="plCode">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header columnWidth="150px">รหัสเเฟ้มราคา</th>
+            <td mat-cell *matCellDef="let row"><a [routerLink]="['detail']" [state]="{ plId: row.plId }">{{row.plCode}}</a></td>
+          </ng-container>
+          <ng-container matColumnDef="plTypeName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header columnWidth="150px">ประเภทเเฟ้มราคา</th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.plTypeName }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="plName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header columnWidth="150px">ชื่อแฟ้มราคา</th>
+            <td mat-cell *matCellDef="let row">{{row.plName}}</td>
+          </ng-container>
+          <ng-container matColumnDef="currencyName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header columnWidth="150px">currencyName</th>
+            <td mat-cell *matCellDef="let row">{{row.currencyName}}</td>
+          </ng-container>
+          <ng-container matColumnDef="taxTypeName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header columnWidth="150px">vatType</th>
+            <td mat-cell *matCellDef="let row">
+              @if(row.taxTypeCode == 1){
+                {{'label.QORT01.WithOutVAT'|translate}}
+              }
+              @else{
+                {{'label.QORT01.TotalVAT'|translate}}
+              }
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        </ng-container>
+      </app-table>
+    </div>
+    </div>
+</div>

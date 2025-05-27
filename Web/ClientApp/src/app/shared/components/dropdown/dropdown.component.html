@@ -1,0 +1,60 @@
+<div class="flex flex-column gap-2">
+    @if(!floatLabel){
+    @if(axis == "vertical"){
+    @if(hasLabel){
+    <ng-container *ngTemplateOutlet="label"></ng-container>
+    }
+    <p-dropdown [styleClass]="class" [options]="items" optionLabel="label" [placeholder]="placeholder"
+        [(ngModel)]="value" (onChange)="onSelected(this.value)" [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''"
+        [filter]="filter" filterBy="label" [showClear]="showClear" [disabled]="disabled" appendTo="body">
+        <ng-template let-item pTemplate="item">
+            {{ item.label }}
+        </ng-template>
+    </p-dropdown>
+    }
+    @else {
+    <div class="grid">
+        <div class="col-12 mb-2 md:col-2 md:mb-0 flex align-items-center">
+            <ng-container *ngTemplateOutlet="label"></ng-container>
+        </div>
+        <div class="col-12 md:col-10">
+            <p-dropdown [styleClass]="class" [options]="items" optionLabel="label" [placeholder]="placeholder"
+                [(ngModel)]="value" (onChange)="onSelected(this.value)"
+                [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''" [filter]="filter" filterBy="label"
+                [showClear]="showClear" [disabled]="disabled" appendTo="body">
+                <ng-template let-item pTemplate="item">
+                    {{ item.label }}
+                </ng-template>
+            </p-dropdown>
+        </div>
+    </div>
+    }
+    }
+    @else {
+    <span class="p-float-label">
+        <p-dropdown [styleClass]="class" [options]="items" optionLabel="label" [placeholder]="placeholder"
+            [(ngModel)]="value" (onChange)="onSelected(this.value)" [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''"
+            [filter]="filter" filterBy="label" [showClear]="showClear" [disabled]="disabled" appendTo="body">
+            <ng-template let-item pTemplate="item">
+                {{ item.label }}
+            </ng-template>
+        </p-dropdown>
+        <ng-container *ngTemplateOutlet="label"></ng-container>
+    </span>
+    }
+</div>
+<small *ngIf="helpText" [class]="helpTextClass">{{helpText}}</small>
+@if(hasErrors){
+<small class="text-red-600" *ngIf="control.hasError('required') || control.hasError('empty')">
+    {{ 'message.STD00007' | translate }}
+</small>
+}
+
+<ng-template #label>
+    <label>
+        @if(required){
+        <span class="text-red-600">* </span>
+        }
+        <ng-content></ng-content>
+    </label>
+</ng-template>

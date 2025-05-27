@@ -1,0 +1,72 @@
+<p-table #dataTable
+dataTableServerRoot
+[id]="id"
+class="datatable [server] {{class}} {{id}}"
+[dataSource]="value"
+[value]="value?.data"
+[rowsPerPageOptions]="rowsPerPageOptions"
+[responsiveLayout]="responsiveLayout"
+[globalFilterFields]="globalFilterFields"
+[styleClass]="styleClass"
+[loading]="loading"
+[rowHover]="rowHover"
+[breakpoint]="breakpoint"
+[tableStyle]="tableStyle"
+[scrollable]="scrollable"
+[sortMode]="sortMode"
+[customSort]="true"
+(sortFunction)="sortFunction($event)"
+[dataKey]="dataKey"
+[(selection)]="selectedDataItems"
+
+>
+  <ng-container *ngIf="captionTemplate">
+    <ng-template pTemplate="caption">
+      <ng-container *ngTemplateOutlet="captionTemplate"></ng-container>
+    </ng-template>
+  </ng-container>
+  <ng-container *ngIf="headerTemplate">
+    <ng-template pTemplate="header">
+      <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+    </ng-template>
+  </ng-container>
+  <ng-container *ngIf="bodyTemplate">
+    <ng-template pTemplate="body" let-dataItem let-editing="editing" let-rowIndex="rowIndex">
+      <ng-container
+        *ngTemplateOutlet="bodyTemplate; context: {dataItem: dataItem, editing : editing, rowIndex:rowIndex}"></ng-container>
+    </ng-template>
+  </ng-container>
+  <ng-container *ngIf="footerTemplate">
+    <ng-template pTemplate="summary">
+      <ng-container *ngTemplateOutlet="footerTemplate;"></ng-container>
+    </ng-template>
+  </ng-container>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+        <td [colSpan]="42" class="text-center">{{ 'label.ALL.NotFound' | translate }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+<div class="flex-auto"
+*ngIf="paginator">
+<ng-container *ngTemplateOutlet="paginContainerTemplate; context: {page: (value.page$ | async) ?? {}}"></ng-container>
+</div>
+
+
+<ng-template #paginContainerTemplate
+let-page="page">
+    <p-paginator
+    #paginatorTemplate
+    (onPageChange)="onPageChange($event,paginationIsRegetServer)"
+    [first]="0"
+    [rows]="page['size']"
+    [totalRecords]="page['count']"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [showFirstLastIcon]="true"
+    [showCurrentPageReport]="currentPageReportTemplate != null"
+    [currentPageReportTemplate]="currentPageReportTemplate">
+    </p-paginator>
+</ng-template>
+

@@ -1,0 +1,14 @@
+<div class="layout-wrapper" [ngClass]="containerClass">
+    <x-topbar></x-topbar>
+    <div class="layout-sidebar" [class.layout-sidebar-light]="layoutService.config().colorScheme == 'light'">
+        <x-sidebar></x-sidebar>
+    </div>
+    <div class="layout-main-container">
+        <div class="layout-main">
+            <router-outlet></router-outlet>
+        </div>
+        <x-footer></x-footer>
+    </div>
+    <x-config></x-config>
+    <div class="layout-mask"></div>
+</div>

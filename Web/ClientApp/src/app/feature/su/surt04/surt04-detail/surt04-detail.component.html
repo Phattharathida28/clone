@@ -1,0 +1,100 @@
+<div class="grid">
+    <div class="col-12 flex flex-wrap gap-3 justify-content-between flex-column lg:flex-row lg:p-fluid">
+        <breadcrumb [items]="breadcrumbItems"></breadcrumb>
+        <button [label]="'label.ALL.Save' | translate" icon="pi pi-save" (click)="save()"></button>
+    </div>
+    <div class="col-12 lg:col-6">
+        <p-fieldset [legend]="'label.SURT04.Detail' | translate" [toggleable]="true">
+            <div class="grid p-fluid" [formGroup]="form">
+                <div class="col-12">
+                    <textbox formControlName="userName">
+                        {{ 'label.SURT04.UserName' | translate }}
+                    </textbox>
+                </div>
+                <div class="col-12">
+                    <password formControlName="password">
+                        {{ 'label.SURT04.Password' | translate }}
+                        <div class="invalid-pattern">
+                            {{ 'label.SURT04.PasswordInvalid' | translate }}
+                        </div>
+                    </password>
+                </div>
+                <div class="col-12">
+                    <password formControlName="passwordConfirm">
+                        {{ 'label.SURT04.PasswordConfirm' | translate }}
+                        <div class="invalid-pattern">
+                            {{ 'label.SURT04.ConfirmPasswordInvalid' | translate }}
+                        </div>
+                    </password>
+                </div>
+                <div class="lg:col-6 col-12">
+                    <textbox formControlName="firstname">
+                        {{ 'label.SURT04.Firstname' | translate }}
+                    </textbox>
+                </div>
+                <div class="lg:col-6 col-12">
+                    <textbox formControlName="lastname">
+                        {{ 'label.SURT04.Lastname' | translate }}
+                    </textbox>
+                </div>
+                <div class="lg:col-6 col-12">
+                    <textbox formControlName="firstnameTh">
+                        {{ 'label.SURT04.FirstnameTh' | translate }}
+                    </textbox>
+                </div>
+                <div class="lg:col-6 col-12">
+                    <textbox formControlName="lastnameTh">
+                        {{ 'label.SURT04.LastnameTh' | translate }}
+                    </textbox>
+                </div>
+                <div class="col-12">
+                    <textbox formControlName="email">
+                        {{ 'label.SURT04.Email' | translate }}
+                        <div class="invalid-pattern">
+                            {{ 'label.SURT04.EmailInvalid' | translate }}
+                        </div>
+                    </textbox>
+                </div>
+                <div class="col-12">
+                    <textbox formControlName="phoneNumber">
+                        {{ 'label.SURT04.PhoneNumber' | translate }}
+                        <div class="invalid-pattern">
+                            {{ 'label.SURT04.PhoneInvalid' | translate }}
+                        </div>
+                    </textbox>
+                </div>
+                <div class="flex flex-wrap align-items-end col-12">
+                    <checkbox formControlName="active" [label]="'label.ALL.Active' | translate">
+                    </checkbox>
+                </div>
+            </div>
+        </p-fieldset>
+    </div>
+
+    <div class="col-12 lg:col-6">
+        <p-fieldset [legend]="'label.SURT04.Profile' | translate" [toggleable]="true">
+            <div class="py-4 flex flex-wrap gap-3 justify-content-end flex-column lg:flex-row lg:p-fluid">
+                <button [label]="'label.ALL.Add' | translate" icon="pi pi-plus" (click)="add()"></button>
+            </div>
+
+            <datatable [rows]="user.userProfiles">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th prop="profileCode" class="text-center">{{ 'label.SURT04.ProfileCode' | translate}} </th>
+                        <th class="text-center">{{ 'label.ALL.Delete' | translate }}</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-row>
+                    <tr>
+                        <td [formGroup]="row.form" class="p-fluid">
+                            <dropdown [items]="master.profiles" formControlName="profileCode" [hasLabel]="false"></dropdown>
+                        </td>
+                        <td class="text-center w-2">
+                            <button icon="pi pi-trash" (click)="remove(row)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </datatable>
+        </p-fieldset>
+    </div>
+</div>

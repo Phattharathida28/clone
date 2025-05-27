@@ -1,0 +1,37 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <h5>{{ 'label.SURT07.ProgramName' | translate }}</h5>
+            <div class="flex flex-wrap py-4 justify-content-between gap-3 flex-column lg:flex-row lg:p-fluid">
+                <textbox [placeholder]="'label.SURT07.Search' | translate" icon="pi pi-search" [hasLabel]="false"
+                    (onInput)="search($event)" class="w-full lg:w-6">
+                </textbox>
+            </div>
+
+            <datatable [rows]="contents">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th prop="name" class="text-center">{{ 'label.SURT07.Name' | translate}} </th>
+                        <th prop="path" class="text-center">{{ 'label.SURT07.Path' | translate }} </th>
+                        <th prop="size" class="text-center">{{ 'label.SURT07.Size' | translate }} </th>
+                        <th prop="createdBy" class="text-center">{{ 'label.SURT07.CreateBy' | translate }} </th>
+                        <th prop="createdDate" class="text-center">{{ 'label.SURT07.CreateDate' | translate }} </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-row>
+                    <tr>
+                        <td>
+                            <a (click)="view(row.url)" class="cursor-pointer">
+                                {{ row.name }}
+                            </a>
+                        </td>
+                        <td>{{ row.path }}</td>
+                        <td class="text-center">{{ row.size | number }}</td>
+                        <td>{{ row.createdBy }}</td>
+                        <td class="text-center">{{ row.createdDate | date: 'dd/MM/yyyy' }}</td>
+                    </tr>
+                </ng-template>
+            </datatable>
+        </div>
+    </div>
+</div>

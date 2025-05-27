@@ -1,0 +1,22 @@
+.align-end{
+    display: felx;
+    align-items: end;
+}
+
+.width-max-auto{
+    ::ng-deep .p-autocomplete{
+        width: 100% !important;
+    }
+}
+
+.margin-top-1{
+    margin-top: 1rem;
+}
+
+p{
+    margin: 0 !important;
+}
+
+.gap-20{
+    gap:20px
+}

@@ -1,0 +1,42 @@
+<div class="card">
+    <h5>Invalid State</h5>
+    <p>All form components have an invalid state style to display the validation errors when ng-invalid ng-dirty
+        combination is applied by Angular.</p>
+    <div class="grid p-fluid" [formGroup]="form">
+        <div class="col-12 md:col-6">
+            <div class="field mt-3">
+                <textbox formControlName="InputText">InputText</textbox>
+            </div>
+            <div class="field">
+                <autocomplete formControlName="AutoComplete" [items]="autocompleteItems">AutoComplete</autocomplete>
+            </div>
+            <div class="field">
+                <calendar formControlName="Calendar">Calendar</calendar>
+            </div>
+            <div class="field">
+                <chips formControlName="Chips">Chips</chips>
+            </div>
+            <div class="field">
+                <password formControlName="Password">Password</password>
+            </div>
+        </div>
+
+        <div class="col-12 md:col-6">
+            <div class="field mt-3">
+                <mask formControlName="InputMask" mask="99/99/9999">InputMask</mask>
+            </div>
+            <div class="field">
+                <number formControlName="InputNumber" class="ng-invalid ng-dirty">InputNumber</number>
+            </div>
+            <div class="field">
+                <dropdown formControlName="Dropdown" [items]="items" class="ng-invalid ng-dirty">Dropdown</dropdown>
+            </div>
+            <div class="field">
+                <multiselect formControlName="MultiSelect" [items]="items" class="ng-invalid ng-dirty">MultiSelect</multiselect>
+            </div>
+            <div class="field">
+                <areabox formControlName="Textarea">Textarea</areabox>
+            </div>
+        </div>
+    </div>
+</div>

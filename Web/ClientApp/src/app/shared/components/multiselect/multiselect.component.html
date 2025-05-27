@@ -1,0 +1,56 @@
+<div class="flex flex-column gap-2">
+    @if(!floatLabel){
+    @if(axis == "vertical"){
+    @if(hasLabel){
+    <ng-container *ngTemplateOutlet="label"></ng-container>
+    }
+    <p-multiSelect [options]="items" [(ngModel)]="value" optionLabel="label" [styleClass]="class"
+        [placeholder]="placeholder" [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''" [filter]="filter" filterBy="label"
+        [showClear]="showClear" [disabled]="disabled" appendTo="body" (onChange)="onSelected(this.value)"
+        (onSelectAllChange)="onSelectAllChange($event)" (onClear)="onSelected(this.value)" [selectAll]="selectAll"
+        [showHeader]="filter">
+    </p-multiSelect>
+    }
+    @else {
+    <div class="grid">
+        <div class="col-12 mb-2 md:col-2 md:mb-0 flex align-items-center">
+            <ng-container *ngTemplateOutlet="label"></ng-container>
+        </div>
+        <div class="col-12 md:col-10">
+            <p-multiSelect [options]="items" [(ngModel)]="value" optionLabel="label" [styleClass]="class"
+                [placeholder]="placeholder" [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''" [filter]="filter"
+                filterBy="label" [showClear]="showClear" [disabled]="disabled" appendTo="body"
+                (onChange)="onSelected(this.value)" (onClear)="onSelected(this.value)" [selectAll]="selectAll"
+                [showHeader]="filter">
+            </p-multiSelect>
+        </div>
+    </div>
+    }
+    }
+    @else {
+    <span class="p-float-label">
+        <p-multiSelect [options]="items" [(ngModel)]="value" optionLabel="label" [styleClass]="class"
+            [placeholder]="placeholder" [ngClass]="hasErrors ? 'ng-invalid ng-dirty': ''" [filter]="filter"
+            filterBy="label" [showClear]="showClear" [disabled]="disabled" appendTo="body"
+            (onChange)="onSelected(this.value)" (onClear)="onSelected(this.value)" [selectAll]="selectAll"
+            [showHeader]="filter">
+        </p-multiSelect>
+        <ng-container *ngTemplateOutlet="label"></ng-container>
+    </span>
+    }
+</div>
+<small *ngIf="helpText" [class]="helpTextClass">{{helpText}}</small>
+@if(hasErrors){
+<small class="text-red-600" *ngIf="control.hasError('required') || control.hasError('empty')">
+    {{ 'message.STD00007' | translate }}
+</small>
+}
+
+<ng-template #label>
+    <label>
+        @if(required){
+        <span class="text-red-600">* </span>
+        }
+        <ng-content></ng-content>
+    </label>
+</ng-template>
